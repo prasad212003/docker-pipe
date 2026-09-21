@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Freshly - Fresh Groceries Delivered</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+    --green: #2f7d32;
+    --green-dark: #205c25;
+    --green-light: #e8f5e9;
+    --lime: #b8dc65;
+    --cream: #fffdf5;
+    --orange: #ff8a3d;
+    --text: #1e271f;
+    --muted: #7b837c;
+    --white: #ffffff;
+    --border: #e8ece6;
+    --shadow: 0 15px 40px rgba(32, 60, 35, .10);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+}
+
+/* ================= HEADER ================= */
+
+header {
+    height: 76px;
+    padding: 0 6%;
+    background: rgba(255,253,245,.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--green);
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--green);
+    color: white;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #687168;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--green);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.location {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.cart-button {
+    position: relative;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: var(--green);
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+
+    top: -5px;
+    right: -5px;
+
+    width: 19px;
+    height: 19px;
+
+    background: var(--orange);
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    display: grid;
+    place-items: center;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 500px;
+
+    padding: 70px 6%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 80% 30%, #dcefc7, transparent 30%),
+        #f6f8ec;
+}
+
+.hero-content {
+    width: 55%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: white;
+    padding: 9px 14px;
+
+    border-radius: 30px;
+
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 800;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,.05);
+}
+
+.hero h1 {
+    margin-top: 20px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px,6vw,76px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero p {
+    margin-top: 20px;
+
+    max-width: 500px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+
+    display: flex;
+    gap: 12px;
+}
+
+.primary-btn {
+    border: none;
+
+    background: var(--green);
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.primary-btn:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    border: 1px solid var(--border);
+
+    background: white;
+
+    padding: 14px 22px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* HERO ART */
+
+.hero-art {
+    position: absolute;
+
+    right: 6%;
+
+    width: 430px;
+    height: 400px;
+}
+
+.circle {
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    right: 30px;
+    top: 30px;
+
+    background: var(--lime);
+
+    border-radius: 50%;
+}
+
+.fruit {
+    position: absolute;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    box-shadow: 0 20px 35px rgba(0,0,0,.12);
+
+    font-size: 65px;
+}
+
+.fruit.apple {
+    width: 135px;
+    height: 135px;
+
+    background: #e94d3f;
+
+    left: 65px;
+    top: 115px;
+
+    transform: rotate(-8deg);
+}
+
+.fruit.orange {
+    width: 110px;
+    height: 110px;
+
+    background: #ffa02e;
+
+    right: 50px;
+    top: 55px;
+
+    font-size: 55px;
+}
+
+.fruit.lemon {
+    width: 90px;
+    height: 90px;
+
+    background: #f5d64c;
+
+    right: 75px;
+    bottom: 45px;
+
+    font-size: 45px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-section {
+    padding: 30px 6% 10px;
+}
+
+.search-box {
+    max-width: 700px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 13px 17px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    box-shadow: var(--shadow);
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.search-icon {
+    font-size: 18px;
+}
+
+/* ================= SECTION ================= */
+
+.section {
+    padding: 55px 6%;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.section-subtitle {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.view-all {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories {
+    display: grid;
+
+    grid-template-columns: repeat(6,1fr);
+
+    gap: 15px;
+}
+
+.category {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 20px 10px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+
+    border-color: #c8ddc7;
+
+    box-shadow: var(--shadow);
+}
+
+.category-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: auto auto 10px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 31px;
+}
+
+.category:nth-child(1) .category-icon {
+    background: #e4f3d9;
+}
+
+.category:nth-child(2) .category-icon {
+    background: #fff0cf;
+}
+
+.category:nth-child(3) .category-icon {
+    background: #ffe4e4;
+}
+
+.category:nth-child(4) .category-icon {
+    background: #eee5ff;
+}
+
+.category:nth-child(5) .category-icon {
+    background: #dff4ef;
+}
+
+.category:nth-child(6) .category-icon {
+    background: #fff1df;
+}
+
+.category-name {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(200px,1fr));
+
+    gap: 18px;
+}
+
+.product {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 10px;
+
+    transition: .3s;
+
+    position: relative;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow);
+}
+
+.product-image {
+    height: 190px;
+
+    border-radius: 14px;
+
+    display: grid;
+    place-items: center;
+
+    background: #f4f6ed;
+
+    font-size: 85px;
+
+    position: relative;
+}
+
+.discount {
+    position: absolute;
+
+    left: 10px;
+    top: 10px;
+
+    padding: 6px 8px;
+
+    border-radius: 7px;
+
+    background: var(--green);
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.favorite {
+    position: absolute;
+
+    right: 10px;
+    top: 10px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    background: white;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+
+    font-size: 16px;
+}
+
+.favorite.active {
+    color: #e84a54;
+}
+
+.product-info {
+    padding: 14px 5px 5px;
+}
+
+.product-name {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.product-unit {
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+.product-bottom {
+    margin-top: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.old-price {
+    margin-left: 5px;
+
+    color: #a2a8a2;
+
+    text-decoration: line-through;
+
+    font-size: 11px;
+}
+
+.add-btn {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    font-weight: 800;
+}
+
+.add-btn:hover {
+    background: var(--green);
+    color: white;
+}
+
+/* ================= DELIVERY BANNER ================= */
+
+.delivery-banner {
+    margin: 20px 6% 55px;
+
+    padding: 28px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(110deg,#275f2c,#4f963e);
+
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.delivery-banner h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+}
+
+.delivery-banner p {
+    margin-top: 6px;
+
+    opacity: .8;
+
+    font-size: 13px;
+}
+
+.delivery-icon {
+    font-size: 65px;
+}
+
+/* ================= CART ================= */
+
+.cart-panel {
+    position: fixed;
+
+    top: 0;
+    right: -430px;
+
+    width: 410px;
+    max-width: 100%;
+
+    height: 100vh;
+
+    background: white;
+
+    z-index: 500;
+
+    box-shadow: -20px 0 50px rgba(0,0,0,.15);
+
+    transition: .35s;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.open {
+    right: 0;
+}
+
+.cart-header {
+    padding: 22px;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-header h2 {
+    font-size: 20px;
+}
+
+.close-cart {
+    border: none;
+    background: none;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.cart-items {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+
+    gap: 12px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+
+    background: #f4f6ed;
+
+    border-radius: 12px;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 30px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.cart-item-price {
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 7px;
+}
+
+.quantity button {
+    width: 24px;
+    height: 24px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.cart-footer {
+    padding: 20px;
+
+    border-top: 1px solid var(--border);
+}
+
+.cart-total {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+.checkout-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: var(--green);
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.55);
+
+    backdrop-filter: blur(5px);
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 430px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 28px;
+
+    animation: pop .25s ease;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.modal-header h2 {
+    font-size: 21px;
+}
+
+.close-modal {
+    border: none;
+    background: none;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.form-input {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: inherit;
+}
+
+.form-input:focus {
+    border-color: var(--green);
+}
+
+.order-success {
+    text-align: center;
+
+    padding: 20px 0;
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: auto auto 15px;
+
+    background: #e6f5e7;
+
+    color: var(--green);
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 35px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 40px 6%;
+
+    background: #17351b;
+
+    color: #b8c8b9;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 12px;
+}
+
+.footer-logo {
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero-content {
+        width: 70%;
+    }
+
+    .hero-art {
+        opacity: .35;
+        right: -70px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media(max-width:600px) {
+
+    header {
+        padding: 0 4%;
+    }
+
+    .location {
+        display: none;
+    }
+
+    .hero {
+        padding: 55px 4%;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-art {
+        opacity: .12;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .section,
+    .search-section {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .categories {
+        grid-template-columns: repeat(3,1fr);
+        gap: 8px;
+    }
+
+    .category {
+        padding: 14px 5px;
+    }
+
+    .category-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+    }
+
+    .product-image {
+        height: 160px;
+        font-size: 65px;
+    }
+
+    .delivery-banner {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        <div class="logo-icon">🌿</div>
+        Freshly
+    </div>
+
+    <nav>
+        <a href="#" class="active">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Fresh Market</a>
+        <a href="#">Deals</a>
+    </nav>
+
+    <div class="header-actions">
+
+        <div class="location">
+            📍 New Delhi ▾
+        </div>
+
+        <button class="cart-button" onclick="openCart()">
+
+            🛒
+
+            <span class="cart-count" id="cartCount">
+                0
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            🥬 100% Fresh • Farm to Door
+        </div>
+
+        <h1>
+            Eat fresh.<br>
+            <span>Live better.</span>
+        </h1>
+
+        <p>
+            Fresh vegetables, juicy fruits, dairy and everyday
+            essentials delivered directly to your doorstep.
+            Handpicked every morning.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="document.getElementById('products').scrollIntoView()">
+
+                Shop Fresh
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="document.getElementById('categories').scrollIntoView()">
+
+                Explore Categories
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-art">
+
+        <div class="circle"></div>
+
+        <div class="fruit apple">🍎</div>
+
+        <div class="fruit orange">🍊</div>
+
+        <div class="fruit lemon">🍋</div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <span class="search-icon">🔎</span>
+
+        <input
+            id="search"
+            type="text"
+            placeholder="Search fruits, vegetables, milk, snacks..."
+            onkeyup="searchProducts()">
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="section" id="categories">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-title">
+                Shop by Category
+            </div>
+
+            <div class="section-subtitle">
+                Everything fresh, all in one place
+            </div>
+        </div>
+
+        <div class="view-all">
+            View all →
+        </div>
+
+    </div>
+
+
+    <div class="categories">
+
+        <div class="category">
+            <div class="category-icon">🥬</div>
+            <div class="category-name">Vegetables</div>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🍎</div>
+            <div class="category-name">Fruits</div>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🥛</div>
+            <div class="category-name">Dairy</div>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🍞</div>
+            <div class="category-name">Bakery</div>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🥜</div>
+            <div class="category-name">Healthy</div>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🧃</div>
+            <div class="category-name">Drinks</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="section" id="products">
+
+    <div class="section-header">
+
+        <div>
+
+            <div class="section-title">
+                Fresh Picks
+            </div>
+
+            <div class="section-subtitle">
+                Handpicked for your kitchen
+            </div>
+
+        </div>
+
+        <div class="view-all">
+            See all →
+        </div>
+
+    </div>
+
+
+    <div class="products" id="productGrid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product" data-name="Fresh Apples">
+
+            <div class="product-image">
+
+                <span class="discount">
+                    20% OFF
+                </span>
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🍎
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Fresh Apples
+                </div>
+
+                <div class="product-unit">
+                    Royal Gala • 1 kg
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹159
+                        <span class="old-price">
+                            ₹199
+                        </span>
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Fresh Apples','🍎',159)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product" data-name="Organic Bananas">
+
+            <div class="product-image">
+
+                <span class="discount">
+                    15% OFF
+                </span>
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🍌
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Organic Bananas
+                </div>
+
+                <div class="product-unit">
+                    Naturally sweet • 1 kg
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹69
+                        <span class="old-price">
+                            ₹80
+                        </span>
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Organic Bananas','🍌',69)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product" data-name="Fresh Tomatoes">
+
+            <div class="product-image">
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🍅
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Fresh Tomatoes
+                </div>
+
+                <div class="product-unit">
+                    Farm fresh • 1 kg
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹49
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Fresh Tomatoes','🍅',49)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product" data-name="Green Avocado">
+
+            <div class="product-image">
+
+                <span class="discount">
+                    10% OFF
+                </span>
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🥑
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Green Avocado
+                </div>
+
+                <div class="product-unit">
+                    Creamy & fresh • 2 pcs
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹149
+                        <span class="old-price">
+                            ₹165
+                        </span>
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Green Avocado','🥑',149)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 5 -->
+
+        <div class="product" data-name="Fresh Milk">
+
+            <div class="product-image">
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🥛
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Fresh Milk
+                </div>
+
+                <div class="product-unit">
+                    Full cream • 1 litre
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹64
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Fresh Milk','🥛',64)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 6 -->
+
+        <div class="product" data-name="Green Broccoli">
+
+            <div class="product-image">
+
+                <span class="discount">
+                    25% OFF
+                </span>
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🥦
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Green Broccoli
+                </div>
+
+                <div class="product-unit">
+                    Farm fresh • 500 g
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹89
+                        <span class="old-price">
+                            ₹120
+                        </span>
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Green Broccoli','🥦',89)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 7 -->
+
+        <div class="product" data-name="Fresh Oranges">
+
+            <div class="product-image">
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🍊
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Fresh Oranges
+                </div>
+
+                <div class="product-unit">
+                    Juicy • 1 kg
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹99
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Fresh Oranges','🍊',99)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 8 -->
+
+        <div class="product" data-name="Farm Carrots">
+
+            <div class="product-image">
+
+                <span class="discount">
+                    18% OFF
+                </span>
+
+                <button class="favorite"
+                        onclick="toggleFavorite(this)">
+                    ♡
+                </button>
+
+                🥕
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Farm Carrots
+                </div>
+
+                <div class="product-unit">
+                    Crunchy • 500 g
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ₹55
+                        <span class="old-price">
+                            ₹67
+                        </span>
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Farm Carrots','🥕',55)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DELIVERY BANNER ================= -->
+
+<div class="delivery-banner">
+
+    <div>
+
+        <h2>
+            Freshness at your doorstep.
+        </h2>
+
+        <p>
+            Order before 10 PM and get your groceries delivered
+            in as little as 30 minutes.
+        </p>
+
+    </div>
+
+    <div class="delivery-icon">
+        🚴‍♂️
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+
+        <div class="footer-logo">
+            🌿 Freshly
+        </div>
+
+        <p style="margin-top:8px">
+            Fresh food. Happy homes.
+        </p>
+
+    </div>
+
+    <div>
+        © 2026 Freshly • Privacy • Terms • Help
+    </div>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+
+        <h2>
+            Your Basket 🛒
+        </h2>
+
+        <button
+            class="close-cart"
+            onclick="closeCart()">
+            ✕
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems">
+
+        <p
+            id="emptyCart"
+            style="text-align:center;color:#899189;margin-top:60px">
+
+            Your basket is empty 🌱
+
+        </p>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>
+                Total
+            </span>
+
+            <span id="cartTotal">
+                ₹0
+            </span>
+
+        </div>
+
+        <button
+            class="checkout-btn"
+            onclick="openCheckout()">
+
+            Continue to Checkout →
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= CHECKOUT MODAL ================= -->
+
+<div
+    class="modal"
+    id="checkoutModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+                Checkout
+            </h2>
+
+            <button
+                class="close-modal"
+                onclick="closeCheckout()">
+                ✕
+            </button>
+
+        </div>
+
+
+        <input
+            class="form-input"
+            placeholder="Full name">
+
+        <input
+            class="form-input"
+            placeholder="Phone number">
+
+        <input
+            class="form-input"
+            placeholder="Delivery address">
+
+        <input
+            class="form-input"
+            placeholder="Apartment / House number">
+
+
+        <button
+            class="checkout-btn"
+            onclick="placeOrder()">
+
+            Place Order • ₹<span id="checkoutTotal">
+                0
+            </span>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= CART DATA ================= */
+
+let cart = [];
+
+
+/* ================= ADD TO CART ================= */
+
+function addToCart(name, emoji, price) {
+
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        cart.push({
+            name: name,
+            emoji: emoji,
+            price: price,
+            quantity: 1
+        });
+
+    }
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+/* ================= UPDATE CART ================= */
+
+function updateCart() {
+
+    const container =
+        document.getElementById("cartItems");
+
+    const count =
+        document.getElementById("cartCount");
+
+    const total =
+        document.getElementById("cartTotal");
+
+    container.innerHTML = "";
+
+    let totalPrice = 0;
+    let totalItems = 0;
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+            <p style="
+                text-align:center;
+                color:#899189;
+                margin-top:60px">
+
+                Your basket is empty 🌱
+
+            </p>
+        `;
+
+    }
+
+
+    cart.forEach((item,index) => {
+
+        totalPrice += item.price * item.quantity;
+
+        totalItems += item.quantity;
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "cart-item";
+
+
+        div.innerHTML = `
+
+            <div class="cart-item-image">
+                ${item.emoji}
+            </div>
+
+            <div class="cart-item-info">
+
+                <div class="cart-item-name">
+                    ${item.name}
+                </div>
+
+                <div class="cart-item-price">
+                    ₹${item.price} each
+                </div>
+
+                <div class="quantity">
+
+                    <button
+                        onclick="changeQuantity(${index},-1)">
+                        −
+                    </button>
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+                    <button
+                        onclick="changeQuantity(${index},1)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            <strong>
+                ₹${item.price * item.quantity}
+            </strong>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+
+    count.textContent = totalItems;
+
+    total.textContent = "₹" + totalPrice;
+
+}
+
+
+/* ================= QUANTITY ================= */
+
+function changeQuantity(index, amount) {
+
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index,1);
+
+    }
+
+    updateCart();
+
+}
+
+
+/* ================= CART PANEL ================= */
+
+function openCart() {
+
+    document
+        .getElementById("cartPanel")
+        .classList.add("open");
+
+}
+
+
+function closeCart() {
+
+    document
+        .getElementById("cartPanel")
+        .classList.remove("open");
+
+}
+
+
+/* ================= FAVORITES ================= */
+
+function toggleFavorite(button) {
+
+    button.classList.toggle("active");
+
+    button.textContent =
+        button.classList.contains("active")
+        ? "♥"
+        : "♡";
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchProducts() {
+
+    const search =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+
+    document
+        .querySelectorAll(".product")
+        .forEach(product => {
+
+            const name =
+                product
+                .dataset
+                .name
+                .toLowerCase();
+
+
+            product.style.display =
+                name.includes(search)
+                ? "block"
+                : "none";
+
+        });
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function openCheckout() {
+
+    if (cart.length === 0) {
+
+        alert("Your basket is empty. Add some fresh groceries first!");
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        total +=
+            item.price *
+            item.quantity;
+
+    });
+
+
+    document
+        .getElementById("checkoutTotal")
+        .textContent = total;
+
+
+    document
+        .getElementById("checkoutModal")
+        .classList.add("show");
+
+}
+
+
+function closeCheckout() {
+
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("show");
+
+}
+
+
+/* ================= PLACE ORDER ================= */
+
+function placeOrder() {
+
+    document
+        .querySelector(".modal-box")
+        .innerHTML = `
+
+            <div class="order-success">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Order Confirmed!
+                </h2>
+
+                <p style="
+                    color:#7b837c;
+                    margin-top:10px;
+                    line-height:1.6">
+
+                    Your fresh groceries are being
+                    prepared and will arrive soon.
+                    Thank you for shopping with Freshly!
+
+                </p>
+
+                <button
+                    class="checkout-btn"
+                    style="margin-top:20px"
+                    onclick="finishOrder()">
+
+                    Continue Shopping
+
+                </button>
+
+            </div>
+
+        `;
+
+}
+
+
+function finishOrder() {
+
+    cart = [];
+
+    updateCart();
+
+    closeCheckout();
+
+    closeCart();
+
+}
+
+
+/* ================= INITIALIZE ================= */
+
+updateCart();
+
+</script>
+
+</body>
+</html>
